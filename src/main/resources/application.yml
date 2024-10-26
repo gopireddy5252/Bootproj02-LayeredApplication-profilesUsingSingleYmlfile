@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: Bootproj02LayeredApplication2Application
+  profiles:
+    active: test
+---
+spring:
+ config:
+  activate:
+   on-profile: dev
+ application:
+   name: Bootproj02LayeredApplication2Application
+ datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///demodatabase
+      username: root
+      password: root
+      type: org.apache.commons.dbcp2.BasicDataSource
+---
+spring:
+ config:
+  activate:
+   on-profile: prod
+ application:
+  name: Bootproj02-LayeredApplication-profilesUsingPropertiesfiles
+ datasource:
+   driver-class-name: oracle.jdbc.driver.OracleDriver
+   url: jdbc:oracle:thin:@localhost:1521:xe
+   username: system
+   password: system
+   type: oracle.ucp.jdbc.PoolDataSourceImpl.class
+---
+spring:
+ config:
+  activate:
+   on-profile: test
+ application:
+  name: Bootproj02-LayeredApplication-profilesUsingPropertiesfiles
+ datasource:
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/demodatabase
+  username: root
+  password: root
+  type: com.mchange.v2.c3p0.ComboPooledDataSource
+---
+spring:
+ config:
+  activate:
+   on-profile: uat
+ application:
+  name: Bootproj02LayeredApplication2Application
+ datasource:
+  driver-class-name: oracle.jdbc.OracleDriver
+  url: jdbc:oracle:thin:@localhost:1521:xe
+  username: system
+  password: system
+  type: oracle.jdbc.pool.OracleDataSource
